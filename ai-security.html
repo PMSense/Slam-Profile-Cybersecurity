@@ -3,166 +3,83 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Security — Slam Laqtib</title>
-<link rel="stylesheet" href="style.css">
+<title>ML & AI Security — Slam Laqtib</title>
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
-<main>
+<div class="nav-wrap">
   <nav class="site-nav">
     <a class="brand" href="index.html">Slam Laqtib</a>
-    <a class="nav-link" href="security.html">Security</a>
-    <a class="nav-link active" href="ai-security.html">AI Security</a>
-    <a class="nav-link" href="engineering.html">Engineering</a>
-    <a class="nav-link" href="product-management.html">Product Management</a>
-    <a class="nav-link" href="trusted-advisor.html">Trusted Advisor | Field CISO</a>
+    <span class="nav-sep">|</span>
+    <a class="nav-link" href="professional-experience.html">Professional Experience</a>
+    <span class="nav-sep">|</span>
+    <a class="nav-link" href="cybersecurity.html">Cybersecurity</a>
+    <span class="nav-sep">|</span>
+    <a class="nav-link active" href="ai-security.html">ML &amp; AI Security</a>
+    <span class="nav-sep">|</span>
     <a class="nav-link" href="education.html">Education</a>
-    <a class="nav-link" href="more.html">More..</a>
   </nav>
-
+</div>
+<div class="nav-wrap">
   <header class="page-header">
     <h1>AI Security Skills &amp; Experience Map</h1>
     <p class="subtitle">For each skill: what it means, what's been done, and where.</p>
     <div class="callout-row">
+      <a class="callout-link" href="stanford-ai-security-guide.html">🎓 Stanford — AI Security Field Guide</a>
+      <a class="callout-link" href="berkeley-applied-ml-guide.html">🎓 UC Berkeley — Applied ML Field Guide</a>
       <a class="callout-link" href="projects.html">🗂 View Projects — hands-on notebooks</a>
-      <a class="callout-link" href="https://github.com/PMSense/AI-Security/blob/main/README.md">📄 View README source on GitHub</a>
     </div>
   </header>
-
+</div>
+<main>
   <section class="page-section">
 
     <div class="skill-block">
-      <h2>AI Trust &amp; Safety</h2>
-      <p class="skill-intro">Ensuring AI systems produce safe, reliable, and non-harmful outputs — and that the infrastructure they run on is trustworthy.</p>
+      <h3>AI Security &amp; Agent Trust</h3>
+      <p class="skill-intro">Security product leader focused on securing AI agents, LLMs, and the infrastructure they depend on, with hands-on experience spanning <strong>agent identity, trust, authorization, prompt injection, provenance, threat detection, and governance</strong>.</p>
       <ul class="skill-entries">
-        <li><strong>Salesforce</strong> — Owned the cryptographic trust infrastructure underpinning Agentforce — every agent authenticates through PKI primitives — Einstein Trust Layer security foundations.</li>
-        <li><strong>Berkeley – Agentic AI Research</strong> — Graduate research on Continuous Verifiable Trust model for autonomous agents and NHIs — defining what 'trust' means when humans are out of the loop.</li>
-        <li><strong>TotalView Capstone</strong> — Shipped hardware-rooted AI guardrails platform (Android StrongBox + C2PA) defending against deepfake content — end-to-end trust chain from capture to publication.</li>
+        <li><strong>Salesforce — Agentforce Trust Layer:</strong> Owned cryptographic trust infrastructure underpinning Agentforce and Hyperforce, including PKI and machine identity at massive scale (<strong>35M+ certificates/day</strong>).</li>
+        <li><strong>UC Berkeley — Agentic AI Research:</strong> Researched a <strong>Continuous Verifiable Trust</strong> model for autonomous agents and NHIs, addressing identity, authorization, lifecycle governance, and continuous verification when humans are out of the loop.</li>
+        <li><strong><a href="https://veriknox.ai/" target="_blank" rel="noopener">VeriKnox</a> — Strategic &amp; Technical Advisor:</strong> Helping define an AI-agent security platform covering <strong>NHI, runtime authorization, fine-grained allow/warn/block policies, behavioral monitoring, and tamper-evident audit trails</strong>.</li>
+        <li><strong>TotalView — Capstone:</strong> Built a hardware-rooted content provenance platform using <strong>Android StrongBox and C2PA</strong>, establishing an end-to-end cryptographic trust chain from capture through verification and publication.</li>
       </ul>
     </div>
 
     <div class="skill-block">
-      <h2>Guardrails &amp; Responsible AI</h2>
-      <p class="skill-intro">Technical and policy controls that constrain AI agent behavior — what it can say, do, access, or decide autonomously.</p>
+      <h3>AI Threat &amp; LLM Security</h3>
+      <p class="skill-intro">Hands-on research and product experience addressing the emerging attack surface of AI and agentic systems.</p>
       <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — Designed MCP/A2A guardrails: prompt injection defense, containerized sandboxing, behavioral anomaly detection, circuit-breaker incident response, and HITL escalation — referenced OWASP Agentic Apps Top 10 2026.</li>
-        <li><strong>TotalView Capstone</strong> — Implemented content-level guardrails using C2PA cryptographic manifests — every piece of AI-generated content carries a verifiable provenance chain.</li>
-        <li><strong>Salesforce</strong> — Authored a 3-year PKI strategy covering Einstein Trust Layer security primitives — the infrastructure layer that guardrails depend on.</li>
+        <li><strong>LLM Security:</strong> Studied hallucination, jailbreaking, model inversion, training-data leakage, adversarial prompting, and AI supply-chain risks through UC Berkeley AI/ML coursework and research.</li>
+        <li><strong>Adversarial ML &amp; Threat Detection — UC Berkeley 207 AI/ML (IDS Research):</strong> Trained an ML IDS classifier on the CIC-IDS2017/2018 dataset across 18 attack categories (DoS, DDoS, brute force, port scan, web attacks, botnets). Then adversarially attacked it, demonstrating <strong>data-poisoning blind spots</strong> where entire attack categories were silently missed.</li>
+        <li><strong>Adversarial ML &amp; Threat Detection — UC Berkeley 207 AI/ML (Projects 1–4):</strong> Built and evaluated multiple classifiers (KNN, Naive Bayes, Logistic Regression, GMM); analyzed model calibration, distribution shift, and feature selection — all foundational to building robust detection systems.</li>
+        <li><strong>AI Threat Modeling:</strong> Applied STRIDE, attack trees, risk quantification, and Zero Trust principles to AI/agent architectures, including input, memory, tool, identity, and output attack surfaces.</li>
       </ul>
     </div>
 
     <div class="skill-block">
-      <h2>NHI &amp; Agentic AI Governance</h2>
-      <p class="skill-intro">Managing the identity, permissions, lifecycle, and auditability of Non-Human Identities — AI agents, service accounts, bots, and automated pipelines.</p>
+      <h3>NHI, Identity &amp; Zero Trust</h3>
+      <p class="skill-intro">Deep expertise in securing machine identities and applying Zero Trust principles to autonomous systems.</p>
       <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — Defined the 'Identity Debt' framework — the accumulated risk from untracked, over-privileged, and unrotated NHIs in enterprise environments. Designed Continuous Verifiable Trust model for NHI lifecycle governance.</li>
-        <li><strong>Salesforce</strong> — PKI infrastructure issues every certificate for Agentforce agents and Hyperforce workloads — 35M+ certs/day. Direct operational experience with machine identity at scale.</li>
-        <li><strong>Venafi</strong> — Led Group PM team across machine identity portfolio ($300M ARR) — PKI/TLS, SSH, Code Signing. Machine identity is the precursor discipline to NHI governance.</li>
+        <li><strong>NHI Governance:</strong> Researched the <strong>Identity Debt</strong> concept — the accumulated risk from unmanaged, over-privileged, and unrotated machine identities — and incorporated it into Continuous Verifiable Trust for agent lifecycles.</li>
+        <li><strong>Venafi:</strong> Led product strategy across a <strong>$300M ARR machine identity portfolio</strong>, spanning PKI/TLS, SSH, and code signing.</li>
+        <li><strong>Salesforce:</strong> Enterprise-scale experience with PKI, mTLS, certificate lifecycle, and machine identity infrastructure supporting Hyperforce and Agentforce.</li>
+        <li><strong>Zero Trust:</strong> Applied identity-based access, continuous verification, least privilege, segmentation, and cryptographic trust to cloud and AI environments.</li>
       </ul>
     </div>
 
     <div class="skill-block">
-      <h2>Prompt Injection Defense</h2>
-      <p class="skill-intro">Preventing malicious inputs from hijacking LLM behavior — causing agents to ignore instructions, leak data, or take unauthorized actions.</p>
+      <h3>AI Safety, Governance &amp; Response</h3>
+      <p class="skill-intro">Designing controls that keep autonomous systems constrained, observable, and accountable.</p>
       <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — Designed prompt injection defense as a core guardrail layer in MCP/A2A security architecture — including input sanitization, instruction hierarchy enforcement, and sandboxed tool execution.</li>
-        <li><strong>Berkeley – 207 AI/ML</strong> — Text classification project (Project 3) directly models the challenge: classifying inputs as safe vs. adversarial using TF-IDF and n-grams — the same techniques used in production injection detection.</li>
+        <li><strong>Governance &amp; Auditability:</strong> Focused on policy enforcement, tamper-evident audit trails, continuous verification, and compliance-grade evidence for autonomous systems. See AI Security &amp; Agent Trust.</li>
       </ul>
     </div>
 
     <div class="skill-block">
-      <h2>LLM Security</h2>
-      <p class="skill-intro">Understanding and mitigating threats specific to large language models — hallucination, jailbreaking, model inversion, training data leakage, and supply chain attacks.</p>
+      <h3>AI Content Provenance</h3>
       <ul class="skill-entries">
-        <li><strong>Berkeley – 207 AI/ML in Cybersecurity</strong> — Coursework covered the LLM security threat landscape — hallucination risks, model inversion, adversarial prompting, and training data privacy.</li>
-        <li><strong>Berkeley – Agentic AI Research</strong> — Research focused on LLM-specific attack surfaces in agentic contexts: tool poisoning, context manipulation, and cross-agent prompt injection.</li>
-        <li><strong>Salesforce</strong> — Einstein Trust Layer PM — the product layer that governs what LLMs can see, do, and return in enterprise Salesforce contexts.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>AI Content Provenance</h2>
-      <p class="skill-intro">Cryptographically verifying the origin, authenticity, and integrity of AI-generated content — who made it, when, on what device, and whether it has been altered.</p>
-      <ul class="skill-entries">
-        <li><strong>TotalView Capstone</strong> — Built and shipped TotalView — a C2PA-based content provenance platform. Hardware-rooted trust chain using Android StrongBox from capture through zero-trust server validation and publication. Stack: Android/Kotlin, Rust c2pa-rs, AWS Lambda/FastAPI, PostgreSQL/PostGIS, React/Mapbox.</li>
-        <li><strong>Berkeley – Capstone Research</strong> — Deep study of C2PA (Coalition for Content Provenance and Authenticity) standard — the emerging industry framework for AI content attribution adopted by Adobe, Microsoft, Google, and others.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>AI/ML Threat Detection &amp; Adversarial ML</h2>
-      <p class="skill-intro">Using ML to detect attacks — and understanding how ML-based detectors can themselves be attacked through adversarial inputs and data poisoning.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – 207 AI/ML (IDS Research)</strong> — Trained an ML IDS classifier on CIC-IDS2017/2018 dataset across 18 attack categories (DoS, DDoS, brute force, port scan, web attacks, botnets). Then adversarially attacked it — demonstrated data poisoning blind spots where entire attack categories were silently missed.</li>
-        <li><strong>Berkeley – 207 AI/ML (Projects 1–4)</strong> — Built and evaluated multiple classifiers (KNN, Naive Bayes, Logistic Regression, GMM); analyzed model calibration, distribution shift, and feature selection — all foundational to building robust detection systems.</li>
-        <li><strong>Salesforce</strong> — PKI anomaly detection — certificate expiry risk, CA concentration exposure, and trust chain failure patterns surfaced through CrowdStrike integration, CTLOG, and DNS attribution.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>MCP/A2A Security</h2>
-      <p class="skill-intro">Securing Model Context Protocol (MCP) and Agent-to-Agent (A2A) communications — the channels through which AI agents invoke tools, share context, and coordinate actions.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — Designed MCP/A2A security architecture: authentication of agent calls, authorization scoping for tool use, payload integrity verification, sandboxed execution environments, and anomaly detection on inter-agent traffic.</li>
-        <li><strong>Salesforce</strong> — PKI infrastructure provides the cryptographic identity layer that MCP/A2A security depends on — mTLS, certificate-based authentication, and short-lived credential issuance for service-to-service calls.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>Identity Threat Detection &amp; Response (ITDR)</h2>
-      <p class="skill-intro">Detecting and responding to attacks targeting identity systems — credential theft, privilege escalation, lateral movement via compromised service accounts, and NHI abuse.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — 'Identity Debt' framework defines the accumulation of untracked NHIs as a systemic ITDR risk — the attack surface grows silently with every unmanaged agent credential.</li>
-        <li><strong>Berkeley – Managing Cyber Risk</strong> — Risk quantification coursework: modeling identity-related threat scenarios, blast radius estimation, and incident response planning for identity compromise.</li>
-        <li><strong>Salesforce</strong> — Trusted advisor engagements with CISOs and BISOs on identity and security posture — including PKI failure modes, certificate expiry outages, and CA concentration risk as identity infrastructure threats.</li>
-        <li><strong>Venafi</strong> — Machine identity portfolio — SSH key sprawl, code signing key compromise, and TLS certificate abuse are all ITDR scenarios at the machine identity layer.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>Zero Trust for AI</h2>
-      <p class="skill-intro">Applying Zero Trust principles to AI systems — never trust an agent implicitly, always verify identity and authorization, enforce least-privilege access, assume breach.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Network Security &amp; Cloud Security</strong> — Zero Trust Architecture coursework — network segmentation, identity-based access, continuous verification, and micro-segmentation applied to cloud and agent environments.</li>
-        <li><strong>TotalView Capstone</strong> — Zero-trust server validation layer — every content claim is verified cryptographically regardless of source; no implicit trust in any content submission.</li>
-        <li><strong>Salesforce</strong> — Paved Path PKI — 100% mTLS coverage enforces Zero Trust at the network layer for Hyperforce workloads. Every service-to-service call requires a valid certificate.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>Threat Modeling for AI Systems</h2>
-      <p class="skill-intro">Systematically identifying attack surfaces, threat actors, and mitigations specific to AI pipelines — training data, model serving, inference APIs, agent tools, and output channels.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Managing Cyber Risk</strong> — Formal threat modeling coursework — STRIDE framework, attack trees, risk quantification, and mitigation prioritization applied to modern AI and cloud systems.</li>
-        <li><strong>Berkeley – Agentic AI Research</strong> — Threat modeled agentic AI pipelines end-to-end: input injection, tool poisoning, memory manipulation, output exfiltration, and cross-agent lateral movement.</li>
-        <li><strong>Salesforce</strong> — Chrome mTLS mandate response — cross-functional threat assessment across PKI, BISOs, MuleSoft, and TPM teams; 3-year PKI strategy built from a comprehensive threat model of CA failure scenarios.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>Circuit-Breaker &amp; Incident Response for AI</h2>
-      <p class="skill-intro">Automated controls that halt or constrain AI agent behavior when anomalous patterns are detected — preventing damage propagation before human review.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — Designed circuit-breaker incident response as a guardrail primitive: threshold-based action suspension, HITL escalation triggers, and state rollback mechanisms for autonomous agent pipelines.</li>
-        <li><strong>Salesforce</strong> — PKI incident response — Paved Path onboarding with zero outage across all environments; chrome mTLS mandate response as a cross-team coordinated circuit-breaker pattern at the platform level.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>HITL (Human-in-the-Loop) Controls</h2>
-      <p class="skill-intro">Decision points where AI agents pause and escalate to human review — ensuring humans remain in control for high-stakes or ambiguous actions.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Agentic AI Research</strong> — Designed HITL escalation framework for autonomous agents: defining escalation triggers, confidence thresholds, approval workflows, and audit trails for agent decisions that require human sign-off.</li>
-        <li><strong>Salesforce</strong> — BISO engagement model — worked with Business Information Security Officers to define where human review is required in automated security workflows; mapped to Agentforce trust primitives.</li>
-      </ul>
-    </div>
-
-    <div class="skill-block">
-      <h2>Secure Software Development &amp; Vulnerability Management</h2>
-      <p class="skill-intro">Building security into the software development lifecycle — threat-aware design, code review, dependency scanning, and CVE response.</p>
-      <ul class="skill-entries">
-        <li><strong>Berkeley – Software Security</strong> — Coursework in secure coding practices, vulnerability classes (buffer overflow, injection, deserialization), SAST/DAST tooling, and CVE lifecycle management.</li>
-        <li><strong>Salesforce / Venafi / Thales</strong> — Product ownership across security platforms — PKI, key management, data protection. Direct experience defining security requirements, reviewing threat models, and managing vulnerability disclosure across enterprise security products.</li>
-        <li><strong>Ingrian / SafeNet (Engineering)</strong> — Spent 7 years as a software engineer building cryptographic systems — KMS, HSM integrations, PKI libraries. Security-first engineering is foundational, not learned later.</li>
+        <li><strong>TotalView:</strong> Built a C2PA-based provenance platform using <strong>Android StrongBox, cryptographic signing, Rust/c2pa-rs, AWS, PostgreSQL/PostGIS, and React</strong>, creating verifiable evidence of content origin and integrity.</li>
+        <li><strong>UC Berkeley:</strong> Conducted deep research into <strong>C2PA and content authenticity</strong>, including its role in combating deepfakes and establishing trustworthy AI-generated content.</li>
       </ul>
     </div>
 

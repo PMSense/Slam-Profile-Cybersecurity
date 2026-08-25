@@ -4,44 +4,62 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Education — Slam Laqtib</title>
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
-<main>
+<div class="nav-wrap">
   <nav class="site-nav">
     <a class="brand" href="index.html">Slam Laqtib</a>
-    <a class="nav-link" href="security.html">Security</a>
-    <a class="nav-link" href="ai-security.html">AI Security</a>
-    <a class="nav-link" href="engineering.html">Engineering</a>
-    <a class="nav-link" href="product-management.html">Product Management</a>
-    <a class="nav-link" href="trusted-advisor.html">Trusted Advisor | Field CISO</a>
+    <span class="nav-sep">|</span>
+    <a class="nav-link" href="professional-experience.html">Professional Experience</a>
+    <span class="nav-sep">|</span>
+    <a class="nav-link" href="cybersecurity.html">Cybersecurity</a>
+    <span class="nav-sep">|</span>
+    <a class="nav-link" href="ai-security.html">ML &amp; AI Security</a>
+    <span class="nav-sep">|</span>
     <a class="nav-link active" href="education.html">Education</a>
-    <a class="nav-link" href="more.html">More..</a>
   </nav>
-
+</div>
+<div class="nav-wrap">
   <header class="page-header">
     <h1>Education</h1>
-    <p class="subtitle">Graduate research and coursework in AI/ML security, cyber risk, and cloud security.</p>
+  </header>
+</div>
+<main>
+  <section class="edu-summary">
+    <p class="edu-degree"><strong>Stanford University</strong> — AI Security</p>
+    <p class="edu-degree"><strong>University of California, Berkeley</strong> — <span class="degree-name">Master of Information and Cybersecurity (MICS)</span>&nbsp;&nbsp;&nbsp;2026</p>
+    <p class="edu-degree"><strong>Helsinki Institute of Technology, Finland</strong> — <span class="degree-name">Bachelor of Science in EE</span> — <span class="degree-name">Major: Computer Automation</span></p>
+
+    <div class="edu-additional">
+      <p><strong>Additional Studies</strong>:</p>
+      <ul>
+        <li>— Mathematics &amp; Physics, Ibn Zohr University;</li>
+        <li>— Computer Science &amp; Automation, Helsinki University of Technology.</li>
+      </ul>
+    </div>
+  </section>
+
+  <h2 class="edu-section-title">UC Berkeley</h2>
+  <section class="section-card">
+    <p class="card-subtitle">Graduate research and coursework in AI/ML security, cyber risk, and cloud security.</p>
     <div class="callout-row">
       <a class="callout-link" href="projects.html">🗂 View Projects — coursework notebooks</a>
     </div>
-  </header>
 
-  <section class="page-section">
-    <h2>Berkeley</h2>
+    <h3>Berkeley</h3>
     <ul class="skill-entries">
       <li><strong>Agentic AI Research (Graduate Research)</strong> — Continuous Verifiable Trust model for autonomous agents and NHIs; the 'Identity Debt' framework; MCP/A2A guardrail architecture including prompt injection defense, sandboxing, anomaly detection, and HITL escalation.</li>
       <li><strong>207 AI/ML in Cybersecurity</strong> — LLM security threat landscape (hallucination, model inversion, adversarial prompting, training data privacy); IDS classifier trained on CIC-IDS2017/2018 across 18 attack categories, then adversarially attacked to expose data-poisoning blind spots; Projects 1–4 building and evaluating KNN, Naive Bayes, Logistic Regression, and GMM classifiers.</li>
       <li><strong>Managing Cyber Risk</strong> — Formal threat modeling (STRIDE framework, attack trees, risk quantification) and identity-related risk scenario modeling, blast radius estimation, and incident response planning.</li>
       <li><strong>Network Security &amp; Cloud Security</strong> — Zero Trust Architecture coursework — network segmentation, identity-based access, continuous verification, and micro-segmentation.</li>
       <li><strong>Software Security</strong> — Secure coding practices, vulnerability classes (buffer overflow, injection, deserialization), SAST/DAST tooling, and CVE lifecycle management.</li>
+      <li><strong>Web Application Security</strong> — Hands-on penetration testing and security assessments of production-style web applications (OrangeHRM, LibreChat, Berkeley Financial System), identifying and reporting on vulnerabilities including malicious file upload, session ID exposure in URLs, insecure cookie scoping, and gaps in sensitive data (SSN) masking.</li>
       <li><strong>Capstone — TotalView</strong> — Built and shipped a C2PA-based AI content provenance platform with a hardware-rooted trust chain (Android StrongBox), from capture through zero-trust server validation and publication.</li>
     </ul>
-  </section>
 
-  <footer class="site-footer">
-    Source on <a href="https://github.com/PMSense/AI-Security">GitHub</a>
-  </footer>
+    <p class="card-footnote">Source on <a href="https://github.com/PMSense/AI-Security">GitHub</a></p>
+  </section>
 </main>
 </body>
 </html>

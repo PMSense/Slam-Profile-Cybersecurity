@@ -1,11 +1,11 @@
 :root {
-  color-scheme: light dark;
-  --bg: #0f1115;
-  --card: #171a21;
-  --text: #e7e9ee;
-  --muted: #9aa1ac;
-  --accent: #5b9dff;
-  --border: #262a33;
+  color-scheme: light;
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --text: #1a1d24;
+  --muted: #667085;
+  --accent: #2f6fed;
+  --border: #e3e6eb;
 }
 * { box-sizing: border-box; }
 body {
@@ -14,31 +14,44 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
-  display: flex;
-  justify-content: center;
 }
 main {
   width: 100%;
   max-width: 760px;
+  margin: 0 auto;
   padding: 0 24px 64px;
 }
 
-/* Nav */
+/* Top nav — full-width wrapper, wider than the 760px page content column */
+.nav-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  width: 100%;
+}
 nav.site-nav {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 4px;
   padding: 24px 0;
   border-bottom: 1px solid var(--border);
   margin-bottom: 40px;
   flex-wrap: wrap;
+  justify-content: flex-start;
 }
 nav.site-nav a.brand {
   font-weight: 700;
   font-size: 16px;
-  color: var(--text);
+  color: var(--accent);
   text-decoration: none;
-  margin-right: auto;
+  margin-right: 4px;
+}
+nav.site-nav a.brand:hover {
+  text-decoration: underline;
+}
+nav.site-nav .nav-sep {
+  color: var(--border);
+  margin: 0 2px;
 }
 nav.site-nav a.nav-link {
   color: var(--muted);
@@ -49,6 +62,80 @@ nav.site-nav a.nav-link {
 nav.site-nav a.nav-link:hover,
 nav.site-nav a.nav-link.active {
   color: var(--accent);
+}
+
+/* Full-height iframe wrapper (external field guide pages) */
+.frame-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.frame-page .nav-wrap {
+  flex-shrink: 0;
+}
+.frame-page nav.site-nav {
+  margin-bottom: 0;
+}
+.field-guide-frame {
+  flex: 1;
+  width: 100%;
+  border: none;
+  display: block;
+}
+
+/* Hero (home page) */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.hero .profile-photo {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 22%;
+  border: 2px solid var(--border);
+  flex-shrink: 0;
+}
+.hero-text h1 {
+  margin: 0 0 8px 0;
+  font-size: 30px;
+}
+.hero-text .titles {
+  margin: 0;
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.chip-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 8px 0;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+/* Chip lists (Areas of Expertise, Technical Skills) */
+ul.chip-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+ul.chip-list li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--text);
 }
 
 /* Page header */
@@ -165,7 +252,7 @@ li.project.placeholder {
 }
 .callout-link:hover {
   background: var(--accent);
-  color: #0f1115;
+  color: #ffffff;
 }
 
 section.page-section {
@@ -187,6 +274,13 @@ section.page-section h2 {
   margin-top: 0;
 }
 
+.ai-selected-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 20px 0;
+  color: var(--text);
+}
+
 /* Skills map (used to render README content on AI Security page) */
 .skill-block {
   margin-bottom: 36px;
@@ -196,14 +290,15 @@ section.page-section h2 {
 .skill-block:last-child {
   border-bottom: none;
 }
-.skill-block h2 {
+.skill-block h2,
+.skill-block h3 {
   font-size: 18px;
   margin: 0 0 6px 0;
   color: var(--text);
 }
 .skill-block .skill-intro {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 14.5px;
   margin: 0 0 14px 0;
   line-height: 1.6;
 }
@@ -216,7 +311,7 @@ ul.skill-entries {
   gap: 10px;
 }
 ul.skill-entries li {
-  font-size: 14px;
+  font-size: 14.5px;
   line-height: 1.6;
   color: var(--text);
   padding-left: 14px;
@@ -225,6 +320,153 @@ ul.skill-entries li {
 ul.skill-entries li strong {
   color: var(--accent);
   font-weight: 600;
+}
+ul.skill-entries li strong a {
+  color: inherit;
+  text-decoration: underline;
+}
+ul.skill-entries li strong a:hover {
+  text-decoration: none;
+}
+
+/* Work experience timeline (Professional Experience page) */
+.exp-entry {
+  margin-bottom: 40px;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--border);
+}
+.exp-entry:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.exp-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-bottom: 2px;
+}
+.exp-header h2 {
+  margin: 0;
+  font-size: 19px;
+  color: var(--text);
+}
+.exp-header h2 .exp-location {
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 15px;
+}
+.exp-dates {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.exp-role {
+  margin: 2px 0 10px 0;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 15px;
+}
+.exp-summary {
+  color: var(--text);
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 14px 0;
+}
+.exp-subrole {
+  margin-top: 20px;
+}
+.exp-subrole .exp-role-line {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+  margin-bottom: 10px;
+}
+.exp-subrole .exp-role-line strong {
+  font-size: 14px;
+  color: var(--text);
+}
+.exp-subrole .exp-role-line span {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+.exp-prior {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* Education page — degree summary + boxed sections */
+.edu-summary {
+  margin: 8px 0 40px 0;
+}
+.edu-degree {
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 0 0 4px 0;
+  color: var(--text);
+}
+.edu-degree .degree-name {
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
+.edu-additional {
+  margin-top: 20px;
+}
+.edu-additional p {
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  font-size: 15px;
+  color: var(--text);
+}
+.edu-additional ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.edu-additional li {
+  font-size: 14px;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+.edu-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 16px 0;
+  color: var(--text);
+}
+
+.section-card {
+  background: #eef1f4;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+}
+.section-card .card-subtitle {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0;
+}
+.section-card h3 {
+  font-size: 18px;
+  margin: 28px 0 16px 0;
+  color: var(--text);
+}
+.section-card .card-footnote {
+  margin-top: 28px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.section-card .card-footnote a {
+  color: var(--muted);
 }
 
 footer.site-footer {
