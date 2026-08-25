@@ -401,34 +401,38 @@ ul.skill-entries li strong a:hover {
   margin-top: 8px;
 }
 
-/* Education page — school logos beside the degree text */
-.edu-logos {
+/* Education page — school logos aligned with each degree row */
+.edu-logo-wrap {
+  width: 44px;
+  height: 44px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 14px;
+  justify-content: center;
   flex-shrink: 0;
 }
 .edu-logo {
-  height: 44px;
+  max-height: 44px;
+  max-width: 44px;
   width: auto;
+  height: auto;
 }
 
 /* Education page — degree summary + boxed sections */
 .edu-summary {
   display: flex;
-  align-items: flex-start;
-  gap: 24px;
+  flex-direction: column;
   margin: 8px 0 40px 0;
 }
-.edu-degrees {
-  flex: 1;
-  min-width: 0;
+.edu-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 6px;
 }
 .edu-degree {
   font-size: 15px;
   line-height: 1.7;
-  margin: 0 0 4px 0;
+  margin: 0;
   color: var(--text);
 }
 .edu-degree .degree-name {
@@ -444,6 +448,7 @@ ul.skill-entries li strong a:hover {
 }
 .edu-additional {
   margin-top: 20px;
+  margin-left: 60px;
 }
 .edu-additional p {
   font-weight: 700;
