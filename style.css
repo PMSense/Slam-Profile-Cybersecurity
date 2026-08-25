@@ -17,7 +17,7 @@ body {
 }
 main {
   width: 100%;
-  max-width: 980px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px 64px;
 }
@@ -42,12 +42,12 @@ nav.site-nav {
 nav.site-nav a.brand {
   font-weight: 700;
   font-size: 18px;
-  color: var(--accent);
+  color: var(--muted);
   text-decoration: none;
   margin-right: 6px;
 }
 nav.site-nav a.brand:hover {
-  text-decoration: underline;
+  color: var(--accent);
 }
 nav.site-nav a.nav-link {
   color: var(--muted);
