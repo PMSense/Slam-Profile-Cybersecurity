@@ -7,6 +7,7 @@
   --accent: #2f6fed;
   --border: #e3e6eb;
   --measure: 680px;
+  --content-width: 727px;
 }
 * { box-sizing: border-box; }
 body {
@@ -348,6 +349,7 @@ ul.skill-entries li strong a:hover {
 
 /* Work experience timeline (Professional Experience page) */
 .exp-entry {
+  max-width: var(--content-width);
   margin-bottom: 24px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border);
