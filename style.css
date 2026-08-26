@@ -52,8 +52,9 @@ nav.site-nav a.brand:hover {
   color: var(--accent);
 }
 nav.site-nav .nav-sep {
-  color: var(--border);
+  color: #c2c7d0;
   font-size: 14px;
+  font-weight: 600;
 }
 nav.site-nav a.nav-link {
   color: var(--muted);
@@ -500,6 +501,7 @@ ul.skill-entries li strong a:hover {
 }
 
 .section-card {
+  max-width: var(--content-width);
   background: #eef1f4;
   border: 1px solid var(--border);
   border-radius: 12px;
