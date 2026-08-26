@@ -7,7 +7,7 @@
   --accent: #2f6fed;
   --border: #e3e6eb;
   --measure: 680px;
-  --content-width: 727px;
+  --content-width: 696px;
 }
 * { box-sizing: border-box; }
 body {
@@ -34,7 +34,7 @@ main {
 nav.site-nav {
   display: flex;
   align-items: center;
-  gap: 30px;
+  gap: 10px;
   padding: 24px 0;
   border-bottom: 1px solid var(--border);
   margin-bottom: 40px;
@@ -50,6 +50,10 @@ nav.site-nav a.brand {
 }
 nav.site-nav a.brand:hover {
   color: var(--accent);
+}
+nav.site-nav .nav-sep {
+  color: var(--border);
+  font-size: 14px;
 }
 nav.site-nav a.nav-link {
   color: var(--muted);
