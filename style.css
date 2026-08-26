@@ -145,6 +145,14 @@ nav.site-nav a.nav-link.active::after {
   color: var(--border);
   margin: 0 8px;
 }
+.hero-text .hero-tagline {
+  margin: 14px 0 0 0;
+  font-style: italic;
+  color: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  max-width: var(--measure);
+}
 
 .chip-label {
   font-weight: 600;
