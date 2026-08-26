@@ -1,0 +1,569 @@
+<title>Rethinking Identity Security in the Age of Deepfakes and Autonomous AI</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFEDE6;
+    --surface:#FBFAF6;
+    --surface-2:#F5F2EA;
+    --ink:#1B1D1F;
+    --ink-muted:#5B5F63;
+    --ink-faint:#8A8D8F;
+    --line:#D8D4C9;
+    --accent:#2B4C5C;
+    --accent-strong:#1D3540;
+    --risk:#A63D2F;
+    --risk-bg:#F4E2DC;
+    --defense:#2E6E5E;
+    --defense-bg:#DEEAE4;
+    --data:#8A6D1F;
+    --data-bg:#F1E7CE;
+    --link:#2B4C5C;
+    --shadow: 0 1px 2px rgba(27,29,31,0.06), 0 1px 14px rgba(27,29,31,0.04);
+    --serif: "IBM Plex Serif", Georgia, "Times New Roman", serif;
+    --sans: "IBM Plex Sans", -apple-system, "Segoe UI", sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, "SF Mono", Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --paper:#14181B;
+      --surface:#1B2024;
+      --surface-2:#20262A;
+      --ink:#ECE9E2;
+      --ink-muted:#A9AEB1;
+      --ink-faint:#767B7E;
+      --line:#33393D;
+      --accent:#7FB2C9;
+      --accent-strong:#9BC9DB;
+      --risk:#E08A72;
+      --risk-bg:#3A231D;
+      --defense:#83C4AE;
+      --defense-bg:#1E332C;
+      --data:#D9BE72;
+      --data-bg:#362D18;
+      --link:#7FB2C9;
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 1px 20px rgba(0,0,0,0.25);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#14181B;
+    --surface:#1B2024;
+    --surface-2:#20262A;
+    --ink:#ECE9E2;
+    --ink-muted:#A9AEB1;
+    --ink-faint:#767B7E;
+    --line:#33393D;
+    --accent:#7FB2C9;
+    --accent-strong:#9BC9DB;
+    --risk:#E08A72;
+    --risk-bg:#3A231D;
+    --defense:#83C4AE;
+    --defense-bg:#1E332C;
+    --data:#D9BE72;
+    --data-bg:#362D18;
+    --link:#7FB2C9;
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 1px 20px rgba(0,0,0,0.25);
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--serif);
+    line-height:1.6;
+    font-size:16.5px;
+  }
+  ::selection{ background:var(--data-bg); color:var(--ink); }
+
+  a{ color:var(--link); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:focus-visible, button:focus-visible, summary:focus-visible{
+    outline:2px solid var(--accent); outline-offset:2px; border-radius:2px;
+  }
+
+  h1,h2,h3,h4{ font-family:var(--sans); color:var(--ink); text-wrap:balance; margin:0; }
+  p{ margin:0 0 0.9em; max-width:66ch; }
+  .prose > p:last-child{ margin-bottom:0; }
+
+  .eyebrow{
+    font-family:var(--mono); font-size:0.72rem; letter-spacing:0.11em; text-transform:uppercase;
+    color:var(--accent); font-weight:600;
+  }
+
+  /* ---------- layout shell ---------- */
+  .shell{ display:flex; max-width:1220px; margin:0 auto; }
+  .railnav{
+    flex:0 0 232px; padding:3.2rem 1.2rem 3rem 1.5rem; position:sticky; top:0; align-self:flex-start;
+    max-height:100vh; overflow-y:auto;
+  }
+  .railnav ol{ list-style:none; margin:1.4rem 0 0; padding:0; border-left:1px solid var(--line); }
+  .railnav li{ margin:0; }
+  .railnav a{
+    display:block; padding:0.38rem 0 0.38rem 0.9rem; margin-left:-1px; border-left:1px solid transparent;
+    font-family:var(--sans); font-size:0.86rem; color:var(--ink-muted); text-decoration:none;
+  }
+  .railnav a:hover{ color:var(--ink); }
+  .railnav a.current{ color:var(--accent); border-left-color:var(--accent); font-weight:600; }
+  .railnav .rail-title{ font-family:var(--sans); font-weight:700; font-size:1rem; color:var(--ink); }
+
+  .topnav{ display:none; }
+
+  main{ flex:1 1 auto; min-width:0; padding:3.2rem 3rem 6rem; }
+
+  @media (max-width: 980px){
+    .railnav{ display:none; }
+    .topnav{
+      display:flex; gap:0.4rem; overflow-x:auto; padding:0.85rem 1.1rem;
+      position:sticky; top:0; z-index:5; background:var(--paper); border-bottom:1px solid var(--line);
+      -webkit-overflow-scrolling:touch;
+    }
+    .topnav a{
+      flex:0 0 auto; font-family:var(--mono); font-size:0.74rem; letter-spacing:0.03em;
+      color:var(--ink-muted); text-decoration:none; padding:0.36rem 0.7rem; border:1px solid var(--line); border-radius:3px;
+      white-space:nowrap;
+    }
+    main{ padding:2rem 1.25rem 5rem; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero{ padding-bottom:2.4rem; border-bottom:1px solid var(--line); margin-bottom:2.6rem; }
+  .hero .eyebrow{ display:block; margin-bottom:0.9rem; }
+  .hero h1{ font-size:clamp(2.1rem, 4vw, 3rem); font-weight:700; line-height:1.08; letter-spacing:-0.01em; }
+  .hero .dek{
+    font-family:var(--serif); font-style:italic; color:var(--ink-muted); font-size:1.15rem;
+    max-width:58ch; margin-top:1.05rem;
+  }
+  .pillars{ display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); margin-top:2.1rem; border:1px solid var(--line); }
+  @media (max-width:700px){ .pillars{ grid-template-columns:1fr; } }
+  .pillar{ background:var(--surface); padding:1.15rem 1.3rem; }
+  .pillar .num{ font-family:var(--mono); color:var(--data); font-size:0.8rem; font-weight:600; }
+  .pillar h3{ font-size:1.02rem; margin:0.3rem 0 0.35rem; }
+  .pillar p{ font-family:var(--sans); font-size:0.88rem; color:var(--ink-muted); margin:0; }
+
+  /* ---------- quickref ---------- */
+  .quickref-wrap{ margin-bottom:3.4rem; }
+  .table-scroll{ overflow-x:auto; border:1px solid var(--line); border-radius:3px; }
+  table{ border-collapse:collapse; width:100%; min-width:640px; font-family:var(--sans); font-size:0.88rem; }
+  table.wide{ min-width:820px; }
+  th,td{ padding:0.62rem 0.85rem; text-align:left; border-bottom:1px solid var(--line); vertical-align:top; }
+  thead th{
+    font-family:var(--mono); font-size:0.7rem; letter-spacing:0.06em; text-transform:uppercase;
+    color:var(--ink-muted); background:var(--surface-2); font-weight:600; border-bottom:1px solid var(--line);
+  }
+  tbody tr:last-child td{ border-bottom:none; }
+  tbody tr:hover{ background:var(--surface-2); }
+  td.num, th.num{ font-family:var(--mono); font-variant-numeric:tabular-nums; }
+  .tag{
+    display:inline-block; font-family:var(--mono); font-size:0.7rem; font-weight:600; letter-spacing:0.02em;
+    padding:0.1rem 0.42rem; border-radius:2px;
+  }
+  .tag.risk{ background:var(--risk-bg); color:var(--risk); }
+  .tag.defense{ background:var(--defense-bg); color:var(--defense); }
+
+  /* ---------- modules ---------- */
+  .module{ padding-top:1.6rem; margin-bottom:3.6rem; scroll-margin-top:1.5rem; }
+  .module-head{ margin-bottom:1.6rem; padding-bottom:1.1rem; border-bottom:2px solid var(--ink); }
+  .module-head .eyebrow{ margin-bottom:0.5rem; }
+  .module-head h2{ font-size:clamp(1.5rem,2.6vw,2rem); font-weight:700; letter-spacing:-0.01em; }
+  .module-thesis{ font-family:var(--sans); color:var(--ink-muted); font-size:0.98rem; max-width:64ch; margin-top:0.55rem; }
+
+  .subhead{ font-family:var(--sans); font-weight:600; font-size:1.05rem; margin:2.1rem 0 0.8rem; color:var(--ink); }
+  .subhead:first-child{ margin-top:0; }
+
+  /* problem/solution pair */
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin:1.1rem 0 1.7rem; }
+  @media (max-width:760px){ .pair{ grid-template-columns:1fr; } }
+  .pblock{ background:var(--surface); padding:1.05rem 1.2rem; }
+  .pblock .lbl{ font-family:var(--mono); font-size:0.7rem; letter-spacing:0.08em; text-transform:uppercase; font-weight:700; display:block; margin-bottom:0.5rem; }
+  .pblock.problem .lbl{ color:var(--risk); }
+  .pblock.solution .lbl{ color:var(--defense); }
+  .pblock p{ font-family:var(--sans); font-size:0.92rem; margin:0; color:var(--ink); max-width:none; }
+
+  /* case study dossier cards */
+  .case-grid{ display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); margin:1.1rem 0 1.7rem; }
+  .case{ background:var(--surface); padding:1.15rem 1.35rem; }
+  .case-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:0.6rem; margin-bottom:0.5rem; }
+  .case-head h4{ font-size:1rem; font-weight:700; }
+  .case-date{ font-family:var(--mono); font-size:0.74rem; color:var(--ink-faint); }
+  .case p{ font-family:var(--sans); font-size:0.91rem; max-width:72ch; color:var(--ink); }
+  .case p.lede{ color:var(--ink-muted); }
+  .stat{ font-family:var(--mono); font-weight:600; color:var(--data); background:var(--data-bg); padding:0.02rem 0.32rem; border-radius:2px; }
+
+  blockquote{
+    margin:1.3rem 0; padding:0.2rem 0 0.2rem 1.1rem; border-left:3px solid var(--accent);
+    font-family:var(--serif); font-style:italic; color:var(--ink-muted); font-size:1.02rem; max-width:56ch;
+  }
+  blockquote cite{ display:block; font-style:normal; font-family:var(--mono); font-size:0.74rem; margin-top:0.4rem; color:var(--ink-faint); }
+
+  ul.plain, ol.plain{ font-family:var(--sans); font-size:0.93rem; padding-left:1.2rem; margin:0.8rem 0 1.2rem; max-width:66ch; }
+  ul.plain li, ol.plain li{ margin-bottom:0.4rem; }
+
+  details{ border:1px solid var(--line); border-radius:3px; margin:1rem 0 1.6rem; background:var(--surface); }
+  summary{
+    cursor:pointer; font-family:var(--mono); font-size:0.78rem; letter-spacing:0.03em; padding:0.7rem 1rem;
+    color:var(--accent); font-weight:600; list-style:none; display:flex; align-items:center; gap:0.5rem;
+  }
+  summary::-webkit-details-marker{ display:none; }
+  summary::before{ content:"▸"; display:inline-block; transition:transform 0.15s ease; }
+  details[open] summary::before{ transform:rotate(90deg); }
+  details .details-body{ padding:0 1.1rem 1.1rem; }
+  @media (prefers-reduced-motion: reduce){ summary::before{ transition:none; } }
+
+  /* glossary */
+  .glossary{ display:grid; grid-template-columns:repeat(2,1fr); gap:0.9rem 2rem; margin-top:1.2rem; }
+  @media (max-width:700px){ .glossary{ grid-template-columns:1fr; } }
+  .gterm{ font-family:var(--mono); font-size:0.86rem; font-weight:600; color:var(--ink); }
+  .gdef{ font-family:var(--sans); font-size:0.86rem; color:var(--ink-muted); margin-top:0.15rem; }
+
+  /* talking points closing */
+  .talk{ background:var(--surface); border:1px solid var(--line); border-radius:3px; padding:1.3rem 1.5rem; margin-top:1.2rem; }
+  .talk h4{ font-size:0.95rem; margin-bottom:0.5rem; }
+  .talk p{ font-family:var(--sans); font-size:0.92rem; color:var(--ink); }
+  .talk + .talk{ margin-top:0.9rem; }
+
+  /* resources list */
+  ul.resources{ font-family:var(--sans); font-size:0.88rem; padding-left:1.2rem; margin:0.8rem 0 1.2rem; max-width:70ch; }
+  ul.resources li{ margin-bottom:0.65rem; color:var(--ink-muted); }
+  ul.resources a{ color:var(--link); }
+
+  footer{ border-top:1px solid var(--line); padding-top:1.4rem; margin-top:2rem; }
+  footer p{ font-family:var(--mono); font-size:0.75rem; color:var(--ink-faint); }
+
+  .backtotop{ font-family:var(--mono); font-size:0.75rem; color:var(--ink-faint); text-decoration:none; }
+</style>
+
+<div class="topnav" id="topnav">
+  <a href="#quickref">Quickref</a>
+  <a href="#m1">01 Identity Debt</a>
+  <a href="#m2">02 First Wave</a>
+  <a href="#m3">03 Second Wave</a>
+  <a href="#m4">04 Convergence</a>
+  <a href="#m5">05 Controls</a>
+  <a href="#m6">06 Implementation</a>
+  <a href="#m7">07 Conclusion</a>
+  <a href="#glossary">Glossary</a>
+  <a href="#resources">Resources</a>
+  <a href="#talking">Talking points</a>
+</div>
+
+<div class="shell">
+  <nav class="railnav" aria-label="Sections">
+    <div class="rail-title">Identity Debt<br>Field Guide</div>
+    <ol>
+      <li><a href="#quickref">Quick reference</a></li>
+      <li><a href="#m1">01 · Identity Debt</a></li>
+      <li><a href="#m2">02 · First wave — deepfakes</a></li>
+      <li><a href="#m3">03 · Second wave — NHIs</a></li>
+      <li><a href="#m4">04 · Convergence</a></li>
+      <li><a href="#m5">05 · Security controls</a></li>
+      <li><a href="#m6">06 · People, process, tech</a></li>
+      <li><a href="#m7">07 · Future &amp; conclusion</a></li>
+      <li><a href="#glossary">Glossary</a></li>
+      <li><a href="#resources">Resources</a></li>
+      <li><a href="#talking">Talking points</a></li>
+    </ol>
+  </nav>
+
+  <main>
+    <header class="hero">
+      <span class="eyebrow">Research paper · UC Berkeley MICS — Managing Cyber Risk / Agentic AI Research, by Slam Laqtib</span>
+      <h1>Rethinking Identity Security in the Age of Deepfakes and Autonomous AI</h1>
+      <p class="dek">The traditional ways we prove who we are online have reached a breaking point. Deepfakes are compromising human biometric verification, autonomous AI agents are separating digital actions from human intent, and the gap left behind — "Identity Debt" — is the defining identity-security problem of this decade.</p>
+      <div class="pillars">
+        <div class="pillar">
+          <span class="num">Pillar 1</span>
+          <h3>Identity Debt</h3>
+          <p>The growing gap between how confidently we verify "who did this" and how easily that verification can now be faked, on both the human and the machine side.</p>
+        </div>
+        <div class="pillar">
+          <span class="num">Pillar 2</span>
+          <h3>Identity of Action</h3>
+          <p>A logged, "authorized" action no longer proves a human meant it — a deepfake can trigger the approval, and an agent can execute it, leaving a clean audit trail for a real breach.</p>
+        </div>
+        <div class="pillar">
+          <span class="num">Pillar 3</span>
+          <h3>Continuous Verifiable Trust</h3>
+          <p>The fix is not a better one-time login. It's replacing static, one-time verification with continuous, hardware-rooted trust for humans and Non-Human Identities alike.</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="quickref-wrap" id="quickref">
+      <span class="eyebrow">Quick reference</span>
+      <h2 style="margin-top:0.5rem; font-size:1.4rem;">Threat → mitigation, at a glance</h2>
+      <p class="module-thesis" style="margin-bottom:1.1rem;">The table to scan thirty seconds before a conversation. Each row links to the fuller treatment below.</p>
+      <div class="table-scroll">
+        <table class="wide">
+          <thead>
+            <tr><th>Threat</th><th>The problem</th><th>The mitigation</th><th>Proof point</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><a href="#arup">Deepfake-enabled BEC</a></td><td>Synthetic audio/video impersonates executives on live calls</td><td>Out-of-band, multi-party verification; hardware-backed liveness</td><td>Arup deepfake heist, $25.6M, 2024</td></tr>
+            <tr><td><a href="#diplomatic">Diplomatic deepfakes</a></td><td>Fabricated video/audio of world leaders used for disinformation</td><td>AI watermarking, content-provenance signing (EU AI Act)</td><td>2024 NH primary Biden robocall</td></tr>
+            <tr><td><a href="#confused-deputy">Confused Deputy NHIs</a></td><td>Over-privileged, long-lived service accounts chain across systems</td><td>Agent-specific, short-lived IDs; strict least privilege</td><td>Claude Code infiltration, 2025</td></tr>
+            <tr><td><a href="#prompt-injection">Indirect prompt injection</a></td><td>Hidden text in content an agent reads hijacks its next action</td><td>ITDR platforms; guardrails on agent tool access</td><td>ServiceNow &amp; Langflow vulnerabilities, 2026</td></tr>
+            <tr><td><a href="#convergence">Accountability breakdown</a></td><td>A "verified" deepfake authorizes a "legitimate" agent — the log looks clean</td><td>Continuous Verifiable Trust; behavioral biometrics</td><td>The convergence scenario — Identity Debt at its worst</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MODULE 01 -->
+    <section class="module" id="m1">
+      <div class="module-head">
+        <span class="eyebrow">Module 01</span>
+        <h2>Welcome to 2026: the era of Identity Debt</h2>
+        <p class="module-thesis">The cyber risk landscape isn't a simple binary of "human versus machine" anymore — it has blurred into a complex spectrum of synthetic reality, and identity has stopped being a solved problem.</p>
+      </div>
+
+      <p>For a long time, identity has been the bedrock of cybersecurity. Modern digital systems are built on a simple premise: verify who a user is, then give them access to data, resources, and services. Organizations have historically relied on passwords, multi-factor authentication (MFA), biometrics, and device checks for that peace of mind. Artificial intelligence is turning those assumptions upside down.</p>
+
+      <div class="subhead">Two waves, rewriting the rules at once</div>
+      <div class="pair">
+        <div class="pblock problem">
+          <span class="lbl">Wave 1 — Generative AI</span>
+          <p>Attackers use generative AI to create incredibly realistic deepfakes, impersonating real people through cloned voices, synthetic video, and hijacked biometrics.</p>
+        </div>
+        <div class="pblock problem" style="background:var(--data-bg);">
+          <span class="lbl" style="color:var(--data);">Wave 2 — Autonomous AI agents</span>
+          <p>A surge in AI agents — Non-Human Identities (NHIs) — performing tasks independently inside enterprise networks, chatting with APIs, cloud platforms, and internal services using credentials meant for humans.</p>
+        </div>
+      </div>
+      <p>Put these two developments together and you get a brand-new class of cyber risk touching everyday people, corporations, and governments alike. The challenge is no longer just "is this human real" — it's understanding, tracking, and controlling the autonomous systems now acting on our behalf.</p>
+    </section>
+
+    <!-- MODULE 02 -->
+    <section class="module" id="m2">
+      <div class="module-head">
+        <span class="eyebrow">Module 02</span>
+        <h2>The first wave: deepfakes and the breakdown of human identity verification</h2>
+        <p class="module-thesis">Organizations can no longer safely assume that seeing or hearing someone online means they are actually dealing with that person.</p>
+      </div>
+
+      <div class="subhead">The problem</div>
+      <p>Generative AI has made it shockingly easy to create synthetic media that looks and sounds exactly like a real person — highly convincing video calls, audio messages, and images from only a tiny bit of training data. In the past, seeing someone on video or hearing their voice on the phone was enough to trust it. Deepfakes make that distinction nearly impossible to draw.</p>
+
+      <div class="subhead">Cyber risks, sector by sector</div>
+      <div class="pair" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="pblock problem"><span class="lbl">Enterprises</span><p>An evolved Business Email Compromise: synthetic audio/video impersonates executives in live meetings, weaponizing our instinct to trust our own eyes and ears — bypassing normal security guardrails entirely.</p></div>
+        <div class="pblock" id="diplomatic" style="background:var(--data-bg);"><span class="lbl" style="color:var(--data);">Governments</span><p>"Diplomatic Deepfakes" fake video or audio of world leaders to stir civil unrest, invent crises, or interfere with elections — a national security risk, not just a corporate one.</p></div>
+        <div class="pblock solution"><span class="lbl">Society</span><p>A "post-truth" uncertainty erodes trust in media and government, and creates a "Liar's Dividend" — real bad actors dismiss real evidence against them by simply claiming "it was a deepfake."</p></div>
+      </div>
+
+      <div class="case" style="border:1px solid var(--line); margin-bottom:1.7rem;">
+        <div class="case-head"><h4>2024 New Hampshire primary robocall</h4><span class="case-date">January 2024</span></div>
+        <p>An AI-generated robocall impersonating President Biden was deployed to suppress voter turnout — a stark, early preview of how easily cloned audio can threaten democratic institutions.</p>
+      </div>
+
+      <div class="subhead" id="arup">Examples of identity abuse</div>
+      <div class="case-grid">
+        <div class="case">
+          <div class="case-head"><h4>The $25 million Arup heist</h4><span class="case-date">2024</span></div>
+          <p class="lede">A finance worker at the engineering firm Arup joined a video call where everyone else on screen — including the "CFO" — was a deepfake.</p>
+          <p>Believing he was taking orders from his actual leadership team, the employee transferred <span class="stat">$25.6M</span> to the attackers. Millions of dollars of cybersecurity software, bypassed by simply hacking human trust.</p>
+        </div>
+        <div class="case">
+          <div class="case-head"><h4>The Ferrari CEO attempt</h4><span class="case-date">2024</span></div>
+          <p>Scammers targeted a Ferrari executive with a fake secret-acquisition story, followed by a phone call from a deepfake of CEO Benedetto Vigna. The executive noticed a slightly robotic accent and asked a personal question the AI couldn't answer — stopping the attack in its tracks.</p>
+        </div>
+        <div class="case">
+          <div class="case-head"><h4>Voice cloning scam, UK energy firm</h4><span class="case-date">2019–2024</span></div>
+          <p>Attackers cloned an executive's voice to demand an urgent wire transfer, resulting in a loss of over <span class="stat">$200,000</span>.</p>
+        </div>
+      </div>
+
+      <div class="subhead">Detection advances and regulatory response</div>
+      <p>Researchers are building deepfake detection tools that spot tiny inconsistencies in facial movement, audio patterns, and hidden metadata. Intel's <strong>FakeCatcher</strong> takes a biological approach — reading subtle blood-flow changes in facial pixels (photoplethysmography) that AI models can't easily fake yet. ETH Zurich researchers have built microchips that cryptographically sign photos and video the instant they're captured, proving the media hasn't been tampered with.</p>
+      <p>Regulation is catching up: the <strong>EU AI Act</strong> and the U.S. National Policy Framework for AI (2026) push for AI watermarks and regulate high-risk identity tech, while laws like the <strong>TAKE IT DOWN Act</strong> target criminal use of non-consensual deepfakes. In response, organizations are moving away from passwords and visual "liveness" checks — easily fooled by synthetic video injected directly into a camera feed — toward hardware-backed security like FIDO2 keys and decentralized identities.</p>
+    </section>
+
+    <!-- MODULE 03 -->
+    <section class="module" id="m3">
+      <div class="module-head">
+        <span class="eyebrow">Module 03</span>
+        <h2 id="confused-deputy">The second wave: autonomous AI agents and Non-Human Identities</h2>
+        <p class="module-thesis">If the first wave is about faking who we are, the second wave is about challenging what we do — and it hands hackers a shadow workforce with no human common sense.</p>
+      </div>
+
+      <p>Autonomous AI agents — Microsoft Copilot, Salesforce Slackbot, or custom internal bots — draft legal documents, pull data, execute workflows, and even make financial trades. To do this, they need credentials, usually handed out as "Service Accounts" with long-lasting passwords and massive permissions. The result: a massive, hidden shadow workforce of Non-Human Identities (NHIs) that make incredibly tempting targets.</p>
+
+      <div class="subhead">Three big headaches</div>
+      <ol class="plain">
+        <li><strong>Privileged access &amp; lateral movement</strong> — a hacked agent becomes a "Confused Deputy." Because bots often connect different systems (pulling a file from AWS to post in Slack), compromising one gets a hacker the keys to the entire kingdom.</li>
+        <li><strong>Expanded attack surface</strong> — AI bots talk to the outside world. Malicious third-party content can use "Indirect Prompt Injections" to trick a company's bot into scooping up sensitive internal data and sending it to a hacker.</li>
+        <li><strong>Accountability risk</strong> — a forensic nightmare. If an AI makes a terrible trade or deletes a database, was it approved by a human, was the bot hacked, or did the AI simply "hallucinate"?</li>
+      </ol>
+
+      <div class="subhead" id="prompt-injection">Examples of identity abuse</div>
+      <div class="case-grid">
+        <div class="case">
+          <div class="case-head"><h4>Prompt injection attacks</h4></div>
+          <p>Researchers have repeatedly shown how malicious, hidden text fed to an enterprise AI bot can trick it into handing over company secrets.</p>
+        </div>
+        <div class="case">
+          <div class="case-head"><h4>The Claude Code infiltration</h4><span class="case-date">2025</span></div>
+          <p>State-sponsored hackers targeted agentic workflows inside financial institutions. By slipping malicious instructions into the data the agents were reading, they tricked the bots into building secret backdoor accounts for the hackers.</p>
+        </div>
+        <div class="case">
+          <div class="case-head"><h4>ServiceNow &amp; Langflow vulnerabilities</h4><span class="case-date">2026</span></div>
+          <p>Critical bugs let attackers hijack the "Identity of Action" in AI bots — bypassing security filters to run unauthorized, malicious code directly in production environments.</p>
+        </div>
+      </div>
+
+      <div class="subhead">Implications and industry response</div>
+      <p>The industry is pushing hard toward machine identity management and strict Zero Trust architectures. OWASP has released a "Top 10 for Agentic Applications (2026)" to help security teams understand the threats, and vendors like GitGuardian and Aembit are building tools that treat a bot's identity like a digital passport requiring constant verification. Still, many companies are flying blind, with a massive governance gap around exactly how many AI agents are running loose on their networks.</p>
+    </section>
+
+    <!-- MODULE 04 -->
+    <section class="module" id="m4">
+      <div class="module-head">
+        <span class="eyebrow">Module 04</span>
+        <h2 id="convergence">The convergence of synthetic and agentic identity risk</h2>
+        <p class="module-thesis">The nightmare scenario is not either wave alone — it's what happens when they crash into each other.</p>
+      </div>
+      <p>Imagine a hacker using a flawless deepfake to trick a system into authorizing a high-level task. That task is then automatically executed by a highly privileged AI agent. The result is a total breakdown in accountability. Check the audit logs afterward and everything looks perfect: a "verified executive" (the deepfake) gave an "authorized command" to a "legitimate bot" (the AI agent).</p>
+      <blockquote>"You are left with a perfectly clean audit trail for a catastrophic breach. This is the ultimate Identity Debt — a reality where it is physically impossible to figure out who actually did what."</blockquote>
+    </section>
+
+    <!-- MODULE 05 -->
+    <section class="module" id="m5">
+      <div class="module-head">
+        <span class="eyebrow">Module 05</span>
+        <h2>Organizational response and security controls</h2>
+        <p class="module-thesis">Surviving this landscape means rethinking identity from the ground up. Five control categories, each with a concrete tactical move.</p>
+      </div>
+      <div class="table-scroll">
+        <table class="wide">
+          <thead><tr><th>Control category</th><th>Security measure</th><th>Tactical consideration</th></tr></thead>
+          <tbody>
+            <tr><td>Continuous Verification</td><td>Behavioral biometrics</td><td>Monitor typing cadence, mouse movement, and session velocity to detect "non-human" or hijacked behavior throughout a session.</td></tr>
+            <tr><td>AI Governance</td><td>Agent-specific IDs</td><td>Assign unique, short-lived identities to every AI agent. Stop using shared or permanent service accounts.</td></tr>
+            <tr><td>Detection (ITDR)</td><td>Identity Threat Detection</td><td>Deploy platforms (e.g. CrowdStrike Falcon Identity) to spot lateral movement and credential abuse in real time.</td></tr>
+            <tr><td>Hardware Security</td><td>FIDO2 / Passkeys</td><td>Mandate hardware security keys (YubiKeys) and device attestation to prove a physical, trusted device is present.</td></tr>
+            <tr><td>Human Oversight</td><td>Multi-party approval</td><td>For anything high-risk (e.g. wire transfers over $10k), require two-person "out-of-band" verification on a different communication channel.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- MODULE 06 -->
+    <section class="module" id="m6">
+      <div class="module-head">
+        <span class="eyebrow">Module 06</span>
+        <h2>Strategic implementation: people, process, and technology</h2>
+        <p class="module-thesis">Fixing Identity Debt takes more than buying new software — it requires evolving all three legs at once.</p>
+      </div>
+      <div class="pair" style="grid-template-columns:1fr 1fr 1fr;">
+        <div class="pblock problem"><span class="lbl">People</span><p>Evolve traditional "IAM Admins" into Identity Architects who actually understand AI risk and bot governance.</p></div>
+        <div class="pblock" style="background:var(--data-bg);"><span class="lbl" style="color:var(--data);">Process</span><p>Run strict, regular Identity Audits to delete stale agents and strip excessive permissions, with a literal "kill switch" for rogue bots.</p></div>
+        <div class="pblock solution"><span class="lbl">Technology</span><p>Shift toward "Liveness-as-a-Service" — optical physics and behavioral cues rather than a static picture — to verify a human being.</p></div>
+      </div>
+    </section>
+
+    <!-- MODULE 07 -->
+    <section class="module" id="m7">
+      <div class="module-head">
+        <span class="eyebrow">Module 07</span>
+        <h2>Future enhancements and conclusion</h2>
+        <p class="module-thesis">Where this goes next, and the core takeaway to carry into any identity-security conversation.</p>
+      </div>
+      <p>Resilience going forward will rely heavily on decentralized identity frameworks and universally accepted content-authenticity standards. Regulators, tech giants, and security researchers need to team up against synthetic threats — and, as always, training everyday employees to spot the subtle signs of an AI impersonation remains a critical last line of defense.</p>
+      <p>The AI revolution has turned digital identity into a highly dynamic, synthetic battlefield. Deepfakes have shattered the reliability of human biometric verification, and autonomous AI agents have flooded networks with a new, highly vulnerable class of non-human risk. Maintaining trust and accountability in the digital world means letting go of the old "username and password" mindset — the future belongs to continuous verification, hardware-rooted trust, and relentless, rigorous governance over our AI agents.</p>
+    </section>
+
+    <!-- GLOSSARY -->
+    <section class="module" id="glossary">
+      <div class="module-head">
+        <span class="eyebrow">Reference</span>
+        <h2>Glossary — terms of art worth using precisely</h2>
+        <p class="module-thesis">The vocabulary this paper builds on.</p>
+      </div>
+      <div class="glossary">
+        <div><div class="gterm">Identity Debt</div><div class="gdef">The growing gap between how we verify identity and how easily that verification can now be faked or automated away.</div></div>
+        <div><div class="gterm">Identity of Action</div><div class="gdef">The (broken) assumption that an authorized-looking action was actually meant by a human.</div></div>
+        <div><div class="gterm">NHI</div><div class="gdef">Non-Human Identity — the credentialed identity of an AI agent, bot, or service account acting inside enterprise systems.</div></div>
+        <div><div class="gterm">Confused Deputy</div><div class="gdef">A compromised agent with legitimate cross-system access, tricked or hijacked into misusing that access on an attacker's behalf.</div></div>
+        <div><div class="gterm">Indirect Prompt Injection</div><div class="gdef">Malicious instructions hidden in content an agent reads — a document, email, or web page — that hijack the agent's next action.</div></div>
+        <div><div class="gterm">ITDR</div><div class="gdef">Identity Threat Detection and Response — platforms that spot lateral movement and credential abuse in real time.</div></div>
+        <div><div class="gterm">Liar's Dividend</div><div class="gdef">The effect where real evidence of wrongdoing can be dismissed as "just a deepfake," undermining accountability even for genuine misconduct.</div></div>
+        <div><div class="gterm">Continuous Verifiable Trust</div><div class="gdef">Replacing one-time, static logins with ongoing, hardware- and behavior-rooted verification for the life of a session.</div></div>
+        <div><div class="gterm">Liveness-as-a-Service</div><div class="gdef">Verifying a human is physically present using optical physics and behavioral cues, rather than trusting a static image or video feed.</div></div>
+        <div><div class="gterm">FIDO2 / Passkeys</div><div class="gdef">Hardware-backed authentication standard that proves a physical, trusted device is present — resistant to phishing and credential replay.</div></div>
+        <div><div class="gterm">Behavioral Biometrics</div><div class="gdef">Continuous monitoring of typing cadence, mouse movement, and session velocity to detect hijacked or non-human sessions.</div></div>
+        <div><div class="gterm">BEC</div><div class="gdef">Business Email Compromise — now supercharged by synthetic audio/video impersonation of executives.</div></div>
+      </div>
+    </section>
+
+    <!-- RESOURCES -->
+    <section class="module" id="resources">
+      <div class="module-head">
+        <span class="eyebrow">Sources</span>
+        <h2>Resources</h2>
+        <p class="module-thesis">Citations from the original paper.</p>
+      </div>
+      <ul class="resources">
+        <li><strong>Cybersecurity &amp; Infrastructure Security Agency (CISA).</strong> (2025). <em>Identity, Credential, and Access Management (ICAM) Reference Architecture.</em> U.S. Department of Homeland Security.</li>
+        <li><strong>European Union.</strong> (2024). <em>Regulation (EU) 2024/1689 — The Artificial Intelligence Act.</em> Official Journal of the European Union.</li>
+        <li><strong>National Institute of Standards and Technology (NIST).</strong> (2025). <em>Digital Identity Guidelines, Initial Public Draft (SP 800-63-4).</em> U.S. Department of Commerce.</li>
+        <li><strong>Cloud Security Alliance (CSA).</strong> (2026). <em>The State of Non-Human Identity and AI Security.</em></li>
+        <li><strong>World Wide Web Consortium (W3C).</strong> (2024). <em>Verifiable Credentials Data Model v2.0.</em> W3C Recommendation.</li>
+        <li><strong>Gartner.</strong> (2025). <em>Top Strategic Technology Trends — The Future of AI Security Is in Securing Agent Actions, Not Prompts.</em></li>
+        <li><strong>Sapp, K.</strong> (2025). <em>Securing Agentic AI: Identity Challenges &amp; Solutions</em> [Video]. NHI Summit.</li>
+        <li><strong>The CISO Signal.</strong> (2024). <em>The $25 Million Arup Deepfake: AI's Most Convincing Con</em> [Audio podcast episode].</li>
+        <li><strong>Towers, M.</strong> (2025). <em>Agentic AI and Non-Human Identity Risks</em> [Video]. NHI Summit.</li>
+        <li><strong>AMP</strong> — Authentication of Media via Provenance: hardware techniques and ledgers for media certification (arXiv).</li>
+        <li><strong>Intel Labs.</strong> (2024). <em>FakeCatcher: Real-Time Deepfake Detection via Photoplethysmography.</em> Intel Newsroom.</li>
+      </ul>
+    </section>
+
+    <!-- TALKING POINTS -->
+    <section class="module" id="talking">
+      <div class="module-head">
+        <span class="eyebrow">Applying this</span>
+        <h2>Ready-made framings for a conversation</h2>
+        <p class="module-thesis">Three ways to open, depending on who's asking.</p>
+      </div>
+      <div class="talk">
+        <h4>If someone asks "is our MFA good enough against deepfakes?"</h4>
+        <p>MFA answers "does this person have the right factors," not "is a human actually here right now." Walk them to hardware-backed liveness and out-of-band, multi-party approval for anything high-value — visual and audio trust alone is not a security control anymore.</p>
+      </div>
+      <div class="talk">
+        <h4>If someone asks "how many AI agents do we actually have running?"</h4>
+        <p>That question itself is the tell — most organizations can't answer it. Point to agent-specific, short-lived identities and regular Identity Audits as the starting point, not a NHI inventory spreadsheet that goes stale in a week.</p>
+      </div>
+      <div class="talk">
+        <h4>If someone asks "give me one example that captures the whole problem"</h4>
+        <p>The convergence scenario is the sharpest answer: a deepfake authorizes a task, a privileged agent executes it, and the audit log reads as a perfectly legitimate, fully authorized action. Clean logs, catastrophic breach — that's Identity Debt in one sentence.</p>
+      </div>
+    </section>
+
+    <footer>
+      <p>Rethinking Identity Security in the Age of Deepfakes and Autonomous AI — research paper by Slam Laqtib, UC Berkeley Master of Information and Cybersecurity (MICS). Personal reference formatting; citations preserved from the original paper.</p>
+      <p style="margin-top:0.6rem;"><a class="backtotop" href="#quickref">↑ back to quick reference</a></p>
+    </footer>
+  </main>
+</div>
+
+<script>
+  // Highlight current section in the sticky rail nav as the reader scrolls.
+  (function(){
+    var links = Array.prototype.slice.call(document.querySelectorAll('.railnav a'));
+    var sections = links.map(function(a){
+      var id = a.getAttribute('href').slice(1);
+      return document.getElementById(id);
+    });
+    function onScroll(){
+      var pos = window.scrollY + 140;
+      var current = 0;
+      for (var i = 0; i < sections.length; i++){
+        if (sections[i] && sections[i].offsetTop <= pos) current = i;
+      }
+      links.forEach(function(a, i){ a.classList.toggle('current', i === current); });
+    }
+    document.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
