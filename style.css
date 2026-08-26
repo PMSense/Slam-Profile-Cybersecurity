@@ -128,6 +128,23 @@ nav.site-nav a.nav-link.active::after {
   line-height: 1.6;
   max-width: var(--measure);
 }
+.hero-text .contact-line {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.hero-text .contact-line a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+.hero-text .contact-line a:hover {
+  text-decoration: underline;
+}
+.hero-text .contact-line .contact-sep {
+  color: var(--border);
+  margin: 0 8px;
+}
 
 .chip-label {
   font-weight: 600;
@@ -536,4 +553,10 @@ footer.site-footer {
 }
 footer.site-footer a {
   color: var(--muted);
+}
+footer.site-footer .fine-print {
+  margin: 6px 0 0 0;
+  font-size: 11px;
+  color: var(--muted);
+  opacity: 0.8;
 }
