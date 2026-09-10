@@ -563,7 +563,7 @@ ul.skill-entries li strong a:hover {
   background: #eef1fc;
   color: var(--accent);
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14.5px;
   margin-bottom: 22px;
 }
 .hero2 .hero-top {
@@ -578,15 +578,19 @@ ul.skill-entries li strong a:hover {
   border: 2px solid var(--border);
 }
 .hero2 .hero-text {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 4px 16px;
   min-width: 0;
 }
 .hero2 h1 {
   font-size: 42px;
-  margin: 0 0 8px 0;
+  margin: 0;
   letter-spacing: -0.02em;
 }
 .hero2 .hero-contact-inline {
-  margin: 0 0 10px 0;
+  margin: 0;
   font-size: 14px;
   font-weight: 600;
 }
@@ -610,6 +614,30 @@ ul.skill-entries li strong a:hover {
 @media (max-width: 900px) {
   .hero2 .hero-subtitle { white-space: normal; }
 }
+.hero2 .hero-education {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.hero2 .hero-edu-logo {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+.hero2 .hero-education p {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+}
+.hero2 .hero-education p strong {
+  color: var(--text);
+}
+.hero2 .hero-education .degree-name {
+  font-variant: small-caps;
+  letter-spacing: 0.03em;
+}
 .hero2 .hero-copy {
   margin-top: 24px;
 }
@@ -621,6 +649,14 @@ ul.skill-entries li strong a:hover {
   margin: 0 0 14px 0;
 }
 .hero2 .hero-copy p:last-child { margin-bottom: 0; }
+.hero2 .hero-highlight {
+  background: #eef1f4;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin: 16px 0;
+  max-width: 720px;
+}
 
 .hero-cta {
   display: flex;
