@@ -567,29 +567,17 @@ ul.skill-entries li strong a:hover {
   margin-bottom: 22px;
 }
 .hero2 .hero-top {
-  display: flex;
-  align-items: flex-start;
-  gap: 28px;
-  flex-wrap: wrap;
+  margin-bottom: 20px;
 }
-.hero2 .hero-photo-col {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 320px;
-  flex-shrink: 0;
-}
-.hero2 .profile-photo {
-  width: 320px;
-  height: 240px;
-  border-radius: 14px;
+.hero2 .hero-banner {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 1;
   object-fit: cover;
-  object-position: 50% 50%;
+  border-radius: 14px;
   border: 2px solid var(--border);
-  flex-shrink: 0;
 }
 .hero2 .hero-text {
-  flex: 1 1 300px;
   min-width: 0;
 }
 .hero2 h1 {
@@ -621,10 +609,6 @@ ul.skill-entries li strong a:hover {
 }
 @media (max-width: 900px) {
   .hero2 .hero-subtitle { white-space: normal; }
-}
-@media (max-width: 640px) {
-  .hero2 .hero-photo-col { width: 100%; }
-  .hero2 .profile-photo { width: 100%; height: auto; aspect-ratio: 4 / 3; }
 }
 .hero2 .hero-copy {
   margin-top: 24px;
